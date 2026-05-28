@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2020 at 05:11 PM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.2.19
+-- Generation Time: Sep 02, 2022 at 10:28 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,7 +33,7 @@ CREATE TABLE `admin` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(300) NOT NULL,
-  `reg_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `email`, `password`, `reg_date`, `updation_date`) VALUES
-(1, 'admin', 'anuj.lpu1@gmail.com', 'Test@1234', '2016-04-04 20:31:45', '2016-04-17');
+(1, 'admin', 'anuj.lpu1@gmail.com', '12', '2016-04-04 20:31:45', '2022-07-20');
 
 -- --------------------------------------------------------
 
@@ -54,7 +54,7 @@ CREATE TABLE `adminlog` (
   `id` int(11) NOT NULL,
   `adminid` int(11) NOT NULL,
   `ip` varbinary(16) NOT NULL,
-  `logintime` timestamp NOT NULL DEFAULT current_timestamp()
+  `logintime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -68,7 +68,7 @@ CREATE TABLE `courses` (
   `course_code` varchar(255) DEFAULT NULL,
   `course_sn` varchar(255) DEFAULT NULL,
   `course_fn` varchar(255) DEFAULT NULL,
-  `posting_date` timestamp NULL DEFAULT current_timestamp()
+  `posting_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -118,7 +118,7 @@ CREATE TABLE `registration` (
   `pmntCity` varchar(500) DEFAULT NULL,
   `pmnatetState` varchar(500) DEFAULT NULL,
   `pmntPincode` int(11) DEFAULT NULL,
-  `postingDate` timestamp NULL DEFAULT current_timestamp(),
+  `postingDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updationDate` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -127,7 +127,8 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`id`, `roomno`, `seater`, `feespm`, `foodstatus`, `stayfrom`, `duration`, `course`, `regno`, `firstName`, `middleName`, `lastName`, `gender`, `contactno`, `emailid`, `egycontactno`, `guardianName`, `guardianRelation`, `guardianContactno`, `corresAddress`, `corresCIty`, `corresState`, `corresPincode`, `pmntAddress`, `pmntCity`, `pmnatetState`, `pmntPincode`, `postingDate`, `updationDate`) VALUES
-(2, 100, 5, 8000, 1, '2020-08-01', 6, 'Bachelor  of Technology', 10806121, 'Anuj', '', 'kumar', 'male', 1234567890, 'ak@gmail.com', 1236547890, 'ABC', 'XYZ', 98756320000, 'ABC 12345 XYZ Street', 'New Delhi', 'Delhi (NCT)', 110001, 'ABC 12345 XYZ Street', 'New Delhi', 'Delhi (NCT)', 110001, '2020-07-20 14:58:26', NULL);
+(2, 100, 5, 8000, 1, '2020-08-01', 6, 'Bachelor  of Technology', 10806121, 'Anuj', '', 'kumar', 'male', 1234567890, 'ak@gmail.com', 1236547890, 'ABC', 'XYZ', 98756320000, 'ABC 12345 XYZ Street', 'New Delhi', 'Delhi (NCT)', 110001, 'ABC 12345 XYZ Street', 'New Delhi', 'Delhi (NCT)', 110001, '2020-07-20 14:58:26', NULL),
+(3, 132, 5, 2000, 1, '2022-07-21', 12, 'Master of Computer Application', 10806121, 'Anuj', '9888888888', 'sir', 'male', 1234567890, 'test@gmail.com', 8573595739, 'shine', 'hkjfd', 8997873556, 'bf', 'banglore', 'Karnataka', 560056, 'bf', 'banglore', 'Karnataka', 560056, '2022-07-20 07:29:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,7 @@ CREATE TABLE `rooms` (
   `seater` int(11) DEFAULT NULL,
   `room_no` int(11) DEFAULT NULL,
   `fees` int(11) DEFAULT NULL,
-  `posting_date` timestamp NULL DEFAULT current_timestamp()
+  `posting_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -220,7 +221,7 @@ CREATE TABLE `userlog` (
   `userIp` varbinary(16) NOT NULL,
   `city` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
-  `loginTime` timestamp NOT NULL DEFAULT current_timestamp()
+  `loginTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -228,7 +229,12 @@ CREATE TABLE `userlog` (
 --
 
 INSERT INTO `userlog` (`id`, `userId`, `userEmail`, `userIp`, `city`, `country`, `loginTime`) VALUES
-(6, 3, '10806121', 0x3a3a31, '', '', '2020-07-20 14:56:45');
+(6, 3, '10806121', 0x3a3a31, '', '', '2020-07-20 14:56:45'),
+(7, 3, 'test@gmail.com', 0x3a3a31, '', '', '2022-07-20 07:25:55'),
+(8, 3, 'test@gmail.com', 0x3a3a31, '', '', '2022-07-20 07:37:07'),
+(9, 3, 'test@gmail.com', 0x3a3a31, '', '', '2022-07-20 07:40:21'),
+(10, 3, 'test@gmail.com', 0x3a3a31, '', '', '2022-07-20 07:47:07'),
+(11, 3, 'test@gmail.com', 0x3a3a31, '', '', '2022-08-17 07:53:47');
 
 -- --------------------------------------------------------
 
@@ -246,7 +252,7 @@ CREATE TABLE `userregistration` (
   `contactNo` bigint(20) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `regDate` timestamp NULL DEFAULT current_timestamp(),
+  `regDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updationDate` varchar(45) DEFAULT NULL,
   `passUdateDate` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -256,7 +262,7 @@ CREATE TABLE `userregistration` (
 --
 
 INSERT INTO `userregistration` (`id`, `regNo`, `firstName`, `middleName`, `lastName`, `gender`, `contactNo`, `email`, `password`, `regDate`, `updationDate`, `passUdateDate`) VALUES
-(3, '10806121', 'Anuj', '', 'kumar', 'male', 1234567890, 'test@gmail.com', 'Test@123', '2020-07-20 14:56:18', NULL, NULL);
+(3, '10806121', 'Anuj', '9888888888', 'sir', 'male', 1234567890, 'test@gmail.com', '123', '2020-07-20 14:56:18', '20-07-2022 12:56:48', '20-07-2022 12:59:42');
 
 --
 -- Indexes for dumped tables
@@ -326,7 +332,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -344,7 +350,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `userregistration`
